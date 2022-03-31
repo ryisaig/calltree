@@ -9,13 +9,15 @@ interface ContainerProps {
 
 const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
   
-  const [callTree, setCallTree] = useState([]);
+  const [callTree, setCallTree]:any[] = useState([]);
   
   useEffect(() => {
     if(type === "pending") {
       getPendingCallTreeList((data:any) => setCallTree(data));
-    } else {
+    } else if(type === "responded") {
       getRespondedCallTreeList((data:any) => setCallTree(data));
+    } else {
+      setCallTree([{_id: "001", subject: "Typhoon Guidelines #TyphooneOdette", createdDate: "03/30/2022"}]);
     }
   }, []);
 
@@ -24,8 +26,13 @@ const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
       <IonList>
         {
           callTree.map((callTree:any) => {
+            let urlToRedirect = undefined;
+            if(type === "pending")
+             urlToRedirect = "/call-tree/pending/"+ callTree._id + "/details";
+            else if(type === "informational")
+             urlToRedirect = "/call-tree/informational/" + callTree._id + "/details";
             return (
-              <IonItem href={type === "pending" ? "/call-tree/pending/"  + callTree._id + "/details" : undefined}>
+              <IonItem href={urlToRedirect}>
                 <IonLabel>{callTree.subject}</IonLabel>
                 <span>{callTree.createdDate}</span>
               </IonItem>

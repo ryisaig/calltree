@@ -42,6 +42,7 @@ import CallTreeDetails from './components/CallTreeDetails';
 import DefaultPage from './components/DefaultPage';
 import OtpPage from './components/OtpPage';
 import UserRegistration from './components/UserRegistration';
+import InformationalDetails from './components/InformationalDetails';
 
 setupIonicReact();
 
@@ -71,7 +72,13 @@ const App: React.FC = () => (
                 <Route exact path="/call-tree/pending/:id/details" render={(props) => 
                     <CallTreeDetails {...props}/>
                 }/>
-                <Route exact path="/">
+                <Route exact path="/call-tree/informational">
+                  <CallTreeList type="informational" />
+                </Route>
+                <Route exact path="/call-tree/informational/:id/details" render={(props) => 
+                  <InformationalDetails {...props}/>
+                }/>
+                <Route exact path="/call-tree">
                   <Redirect to="/call-tree/pending" />
                 </Route>
               </IonRouterOutlet>
