@@ -6,7 +6,7 @@ export const getPendingCallTreeList = (callback:any) => {
     //     callback(res.data);
     // });
 
-    callback([{_id: "001", subject: "Are you safe? - Pls. respond", createdDate: "03/30/2022"}])
+    callback([{_id: "001", subject: "Are you safe? - Pls. respond.", subtitle: "Ligtas ka ba? Pakisagot ang tanong.", createdDate: "03/30/2022"}])
 }
 
 export const getRespondedCallTreeList = (callback:any) => {
@@ -19,14 +19,16 @@ export const getRespondedCallTreeList = (callback:any) => {
     //     console.log("calltree", calltree);
     //     callback(calltree);
     // });
-    callback([{_id: "001", subject: "Are you safe? - Pls. respond", createdDate: "03/30/2022"}])
+    callback([{_id: "001", subject: "Are you safe? - Pls. respond", subtitle: "Ligtas ka ba? Pakisagot ang tanong.", createdDate: "03/30/2022"}])
 }
 
 export const getCallTreeDetails = (id:any, callback:any) => {
-    axios.get("http://192.168.1.12:5000/calltree/pending/" + id, { params: {mobileNumber: "+639178238032"}})
-    .then(res => {
-        callback(res.data);
-    });
+    // axios.get("http://192.168.1.12:5000/calltree/pending/" + id, { params: {mobileNumber: "+639178238032"}})
+    // .then(res => {
+    //     callback(res.data);
+    // });
+    callback({_id: "001", subject: "Are you safe? - Pls. respond", subtitle: "Ligtas ka ba? Pakisagot ang tanong.", createdDate: "03/30/2022"})
+
 }
 
 export const saveCallTreeResponse = (callTreeId: any, response: string, details: string, callback: any) => {

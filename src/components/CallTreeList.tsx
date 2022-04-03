@@ -33,7 +33,7 @@ const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
              urlToRedirect = "/call-tree/informational/" + callTree._id + "/details";
             return (
               <IonItem href={urlToRedirect}>
-                <IonLabel>{callTree.subject}</IonLabel>
+                <IonLabel>{callTree.subject}<br/><p style={{fontSize: "12px", fontStyle: "italic"}}>{callTree.subtitle}</p></IonLabel>
                 <span>{callTree.createdDate}</span>
               </IonItem>
             );

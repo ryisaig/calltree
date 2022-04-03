@@ -29,8 +29,7 @@ const InformationalDetails: React.FC<any> = (props:any) => {
             <IonIcon slot="start" icon={chevronBack} />
             Back
           </IonButton>
-          <IonCardSubtitle>{callTree.createdDate}</IonCardSubtitle>
-          <IonCardTitle>{callTree.subject}</IonCardTitle>
+        
         </IonCardHeader>
         <IonCardContent>
           <div style={{borderStyle: "solid", borderWidth: "thin", borderColor: "#E0E0E0", padding: "20px"}}>

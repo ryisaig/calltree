@@ -15,7 +15,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { checkbox, checkboxOutline, informationCircleOutline, triangle } from 'ionicons/icons';
+import { checkbox, checkboxOutline, informationCircleOutline, triangle, warningOutline} from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -54,7 +54,7 @@ const App: React.FC = () => (
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle style={{textAlign: "center"}}>MDRRMO Call Tree</IonTitle>
+          <img src="./logo.png" style={{height: "40px", margin: "auto", display: "block"}}/>
         </IonToolbar>
       </IonHeader>
       <IonContent>
