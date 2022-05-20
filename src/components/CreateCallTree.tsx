@@ -1,4 +1,4 @@
-import { IonCardContent, IonModal, IonContent,  IonCardHeader, IonCardTitle, IonCard, IonInput, IonButton, IonItem, IonCheckbox} from "@ionic/react";
+import { IonCardContent, IonModal, IonContent,  IonCardHeader, IonCardTitle, IonCard, IonInput, IonButton, IonItem, IonCheckbox, IonLabel} from "@ionic/react";
 
 const CreateCallTree: React.FC = () => {
     return (
@@ -10,7 +10,8 @@ const CreateCallTree: React.FC = () => {
         </IonCardHeader>
         <IonCardContent>
           <IonInput placeholder="Title" value="Are you safe? - Pls respond."/>
-          <IonInput placeholder="Caption" value="Ligtas ka ba? Pakisagot ang tanong."/>
+          <IonInput placeholder="Caption" value="Ligtas ka ba? Pakisagot ang tanong."/><br/>
+          <IonLabel>Pls pick type of responses</IonLabel>
           <IonItem>
             <IonCheckbox slot="start" color="primary" />
             I'm totally safe.

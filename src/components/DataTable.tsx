@@ -76,79 +76,10 @@ const DataTable: React.FC<DataTableConfig> = (props: DataTableConfig) => {
                     )
                   } */}
                   <IonCol className="data-table-expand">
-                    <IonIcon icon={eyeOutline}/>
+                    {/* <IonIcon icon={eyeOutline}/> */}
                 </IonCol>
               </IonRow>
-              <IonRow slot="content" style={{backgroundColor: realNum % 2 === 0 ? "#f5f6f9": "none", padding: "20px"}}>
-                <IonCol>
-                  <IonGrid>
-                    {
-                      dataPropChunks.map(chunk => {
-                        return (
-                        <IonRow>
-                          {
-                            chunk.map((prop:any)=> {
-                              return <IonCol><b>{props.labelMapping[prop[0]]} : </b> {prop[1]}</IonCol>
-                            })
-                          }
-                        </IonRow>
-                      )
-                      })
-                    }
-                  </IonGrid>
-                  <IonGrid>
-                  <IonRow>
-                    <IonCol>
-                      {/* <IonToolbar> */}
-                      <IonButtons style={{margin: "auto", width: "fit-content"}}>
-                        <IonButton color="primary">
-                          <IonIcon slot="start" icon={openOutline}/>
-                           View complete profile
-                        </IonButton>
-                        <IonButton>
-                          <IonIcon slot="start" icon={createOutline}/>
-                           Quick profile update
-                        </IonButton>
-                        <IonButton>
-                          <IonIcon slot="start" icon={cloudUploadOutline}/>
-                           Upload updated CV
-                        </IonButton>
-                        <IonButton>
-                          <IonIcon slot="start" icon={documentAttachOutline}/>
-                           Endorse to a job
-                        </IonButton>
-                        </IonButtons>
-                      {/* </IonToolbar> */}
-                    </IonCol>
-                  </IonRow>
-                  <IonRow>
-                    <IonCol>
-                      {/* <IonToolbar> */}
-                      <IonButtons style={{margin: "auto", width: "fit-content"}}>
-                        <IonButton>
-                          <IonIcon slot="start" icon={chatbubblesOutline}/>
-                           Log an interview note
-                        </IonButton>
-                        <IonButton>
-                          <IonIcon slot="start" icon={cutOutline}/>
-                           Move to inactive file
-                        </IonButton>
-                        <IonButton>
-                          <IonIcon slot="start" icon={lockClosedOutline}/>
-                           Move to protected file
-                        </IonButton>
-                        <IonButton color="danger">
-                          <IonIcon slot="start" icon={trashBinOutline}/>
-                           Request for deletion
-                        </IonButton>
-                        </IonButtons>
-                      {/* </IonToolbar> */}
-                    </IonCol>
-                  </IonRow>
-                  </IonGrid>
-                </IonCol>
-                
-              </IonRow>
+             
               </IonAccordion>
               </IonAccordionGroup>
             )

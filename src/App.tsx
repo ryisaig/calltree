@@ -44,6 +44,7 @@ import OtpPage from './components/OtpPage';
 import UserRegistration from './components/UserRegistration';
 import InformationalDetails from './components/InformationalDetails';
 import Admin from './components/Admin';
+import AdminResponses from './components/AdminResponses';
 
 setupIonicReact();
 
@@ -99,8 +100,11 @@ const App: React.FC = () => (
               </IonTabBar>
             </IonTabs>
           </Route>
-          <Route path="/admin">
+          <Route exact path="/admin">
             <Admin />
+          </Route>
+          <Route exact path="/admin/responses">
+            <AdminResponses />
           </Route>
           <Route exact path="/user-registration/new">
             <UserRegistration store={store}/>
