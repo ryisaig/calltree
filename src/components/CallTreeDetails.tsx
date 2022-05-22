@@ -30,7 +30,7 @@ const CallTreeDetails: React.FC<any> = (props:any) => {
             Back
           </IonButton>
           <IonCardSubtitle>{callTree.createdDate}</IonCardSubtitle>
-          <IonCardTitle>{callTree.subject}<br/><p style={{fontSize: "12px", fontStyle: "italic"}}>{callTree.subtitle}</p></IonCardTitle>
+          <IonCardTitle>{callTree.subject}<br/><p style={{fontSize: "12px", fontStyle: "italic"}}>{callTree.caption}</p></IonCardTitle>
         </IonCardHeader>
         <IonCardContent>
           <IonList style={{borderStyle: "solid", borderWidth: "thin", borderColor: "#E0E0E0", padding: "0"}}>

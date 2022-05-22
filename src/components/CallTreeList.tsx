@@ -17,7 +17,7 @@ const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
     } else if(type === "responded") {
       getRespondedCallTreeList((data:any) => setCallTree(data));
     } else {
-      setCallTree([{_id: "001", subject: "Typhoon Guidelines #TyphooneOdette", createdDate: "03/30/2022"}]);
+      setCallTree([{id: "001", subject: "Typhoon Guidelines #TyphooneOdette", createdDate: "03/30/2022"}]);
     }
   }, []);
 
@@ -28,12 +28,12 @@ const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
           callTree.map((callTree:any) => {
             let urlToRedirect = undefined;
             if(type === "pending")
-             urlToRedirect = "/call-tree/pending/"+ callTree._id + "/details";
+             urlToRedirect = "/call-tree/pending/"+ callTree.id + "/details";
             else if(type === "informational")
-             urlToRedirect = "/call-tree/informational/" + callTree._id + "/details";
+             urlToRedirect = "/call-tree/informational/" + callTree.id + "/details";
             return (
               <IonItem href={urlToRedirect}>
-                <IonLabel>{callTree.subject}<br/><p style={{fontSize: "12px", fontStyle: "italic"}}>{callTree.subtitle}</p></IonLabel>
+                <IonLabel>{callTree.subject}<br/><p style={{fontSize: "12px", fontStyle: "italic"}}>{callTree.caption}</p></IonLabel>
                 <span>{callTree.createdDate}</span>
               </IonItem>
             );

@@ -10,13 +10,37 @@ export const generateOtp = (mobileNumber: any, callback: any) => {
     }).catch(error => {
         alert(error);
     });
-    // callback("");
 };
 
 export const validateOtp = (referenceKey: string, otp: string, callback: any) => {
     axios.get(URL + "/user/otp/validate?referenceKey=" + referenceKey + "&otp=" + otp)
     .then(res => {
         callback(res.data);
+    }).catch(error => {
+        alert(error);
+    });
+}
+
+export const getUser = (mobileNumber:any, callback:any) => {
+    axios.get(URL + "/user?mobileNumber=" + mobileNumber)
+    .then(res => {
+        callback(res.data);
+    }).catch(error => {
+        alert(error);
+    });
+}
+
+export const saveUser = (userDetails:any, callback:any) => {
+    
+    axios.post(URL + "/user", {
+        mobileNumber: sessionStorage.getItem("user"),
+        name: userDetails.fullName,
+        address: userDetails.address,
+        geolocationX: sessionStorage.getItem("geoLocationX"),
+        geolocationY: sessionStorage.getItem("geoLocationY"),
+    })
+    .then(() => {
+       callback();
     }).catch(error => {
         alert(error);
     });

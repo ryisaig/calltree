@@ -107,16 +107,16 @@ const App: React.FC = () => (
             <AdminResponses />
           </Route>
           <Route exact path="/user-registration/new">
-            <UserRegistration store={store}/>
+            <UserRegistration/>
           </Route>
-          <Route exact path="/user-registration/otp" render={(props) => 
-              <OtpPage {...props} store={store}/>
+          <Route exact path="/user-registration/otp/:referenceKey" render={(props) => 
+              <OtpPage {...props}/>
           }/>
           <Route exact path="/user-registration">
-            <DefaultPage store={store} />
+            <DefaultPage />
           </Route>
           <Route exact path="/">
-            <DefaultPage store={store} />
+            <DefaultPage/>
           </Route>
         </IonRouterOutlet>
       </IonReactRouter>
