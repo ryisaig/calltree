@@ -2,20 +2,26 @@ import { IonList, IonItem, IonLabel, IonDatetime } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { getPendingCallTreeList, getRespondedCallTreeList } from '../actions/CallTreeAction';
 import './DefaultStyle.css';
+import SockJsClient from 'react-stomp';
 
-interface ContainerProps {
-  type: string;
-}
-
-const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
+const CallTreeList = ({ type }) => {
   
-  const [callTree, setCallTree]:any[] = useState([]);
+  const [callTree, setCallTree] = useState([]);
+
+  const SOCKET_URL = 'http://localhost:8080/ws-message';
+  
+  const onMessageReceived = (msg) => {
+      alert("A recent call tree has been triggered.");
+      getPendingCallTreeList((data) => setCallTree(data));
+
+    }
+
   
   useEffect(() => {
     if(type === "pending") {
-      getPendingCallTreeList((data:any) => setCallTree(data));
+      getPendingCallTreeList((data) => setCallTree(data));
     } else if(type === "responded") {
-      getRespondedCallTreeList((data:any) => setCallTree(data));
+      getRespondedCallTreeList((data) => setCallTree(data));
     } else {
       setCallTree([{id: "001", subject: "Typhoon Guidelines #TyphooneOdette", createdDate: "03/30/2022"}]);
     }
@@ -25,7 +31,7 @@ const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
     <div className="container">
       <IonList>
         {
-          callTree.map((callTree:any) => {
+          callTree.map((callTree) => {
             let urlToRedirect = undefined;
             if(type === "pending")
              urlToRedirect = "/call-tree/pending/"+ callTree.id + "/details";
@@ -39,6 +45,12 @@ const CallTreeList: React.FC<ContainerProps> = ({ type }) => {
             );
           })
         }
+         <SockJsClient
+          url={SOCKET_URL}
+          topics={['/topic/message']}
+          onMessage={(msg)=> onMessageReceived(msg)}
+          debug={false}
+        />
       </IonList>
     </div>
   );
