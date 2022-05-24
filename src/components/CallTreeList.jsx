@@ -1,6 +1,6 @@
 import { IonList, IonItem, IonLabel, IonDatetime } from '@ionic/react';
 import { useEffect, useState } from 'react';
-import { getPendingCallTreeList, getRespondedCallTreeList } from '../actions/CallTreeAction';
+import { getInstructionalCallTreeList, getPendingCallTreeList, getRespondedCallTreeList } from '../actions/CallTreeAction';
 import './DefaultStyle.css';
 import SockJsClient from 'react-stomp';
 
@@ -11,9 +11,13 @@ const CallTreeList = ({ type }) => {
   const SOCKET_URL = 'http://localhost:8080/ws-message';
   
   const onMessageReceived = (msg) => {
-      alert("A recent call tree has been triggered.");
-      getPendingCallTreeList((data) => setCallTree(data));
-
+      alert("A recent " + msg + " call tree has been triggered.");
+      if(msg === "informational"){
+        getInstructionalCallTreeList((data) => setCallTree(data));
+        window.location.href = "/call-tree/informational";
+      } else {
+        getPendingCallTreeList((data) => setCallTree(data));
+      }
     }
 
   
@@ -23,7 +27,7 @@ const CallTreeList = ({ type }) => {
     } else if(type === "responded") {
       getRespondedCallTreeList((data) => setCallTree(data));
     } else {
-      setCallTree([{id: "001", subject: "Typhoon Guidelines #TyphooneOdette", createdDate: "03/30/2022"}]);
+      getInstructionalCallTreeList((data) => setCallTree(data));
     }
   }, []);
 
@@ -48,7 +52,13 @@ const CallTreeList = ({ type }) => {
          <SockJsClient
           url={SOCKET_URL}
           topics={['/topic/message']}
-          onMessage={(msg)=> onMessageReceived(msg)}
+          onMessage={(msg)=> onMessageReceived("")}
+          debug={false}
+        />
+        <SockJsClient
+          url={SOCKET_URL}
+          topics={['/topic/informational']}
+          onMessage={(msg)=> onMessageReceived("informational")}
           debug={false}
         />
       </IonList>
