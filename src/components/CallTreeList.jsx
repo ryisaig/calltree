@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react';
 import { getInstructionalCallTreeList, getPendingCallTreeList, getRespondedCallTreeList } from '../actions/CallTreeAction';
 import './DefaultStyle.css';
 import SockJsClient from 'react-stomp';
+import { HOST } from '../URL';
 
 const CallTreeList = ({ type }) => {
   
   const [callTree, setCallTree] = useState([]);
 
-  const SOCKET_URL = 'http://localhost:8080/ws-message';
+  const SOCKET_URL = HOST + '/ws-message';
   
   const onMessageReceived = (msg) => {
       alert("A recent " + msg + " call tree has been triggered.");

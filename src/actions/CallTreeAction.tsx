@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { HOST } from '../URL';
 
-const URL = "http://localhost:8080";
+const URL = HOST;
 
 export const getPendingCallTreeList = (callback:any) => {
     axios.get(URL + "/calltree/pending", { params: {mobileNumber: sessionStorage.getItem("user")}})

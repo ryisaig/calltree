@@ -39,13 +39,15 @@ const CallTreeDetails: React.FC<any> = (props:any) => {
                 <IonRadio slot="start" value="SAFE" />
                 <IonLabel color="primary">
                 I'm totally safe
+                <br/><span style={{color:"black", fontSize: "13px", fontStyle: "italic"}}>Ligtas ako</span>
                 </IonLabel>
                 <IonIcon icon={thumbsUp} slot="end" color="primary" />
               </IonItem>
               <IonItem>
                 <IonRadio slot="start" value="UNCERTAIN" color="warning"/>
                 <IonLabel color="warning">
-                  I'm safe but uncertain
+                  I'm safe but uncertain 
+                  <br/><span style={{color:"black", fontSize: "13px", fontStyle: "italic"}}>Ligtas ako ngunit walang kasiguruhan</span>
                 </IonLabel>
                 <IonIcon icon={thumbsDown} slot="end" color="warning"/>
               </IonItem>
@@ -53,6 +55,7 @@ const CallTreeDetails: React.FC<any> = (props:any) => {
                 <IonRadio slot="start" value="NEED_HELP" color="danger"/>
                 <IonLabel color="danger">
                   I urgently need help
+                  <br/><span style={{color:"black", fontSize: "13px", fontStyle: "italic"}}>Kailangan ko ng tulong</span>
                 </IonLabel>
                 <IonIcon icon={warning} slot="end" color="danger"/>
               </IonItem>

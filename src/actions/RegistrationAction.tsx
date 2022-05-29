@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { HOST } from '../URL';
 
 // const URL = "http://192.168.1.12:5000";
-const URL = "http://localhost:8080";
+const URL = HOST;
 
 export const generateOtp = (mobileNumber: any, callback: any) => {
     axios.get(URL + "/user/otp?mobileNumber=" + mobileNumber)
